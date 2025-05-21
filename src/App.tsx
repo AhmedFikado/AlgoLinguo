@@ -1,9 +1,10 @@
 import "./App.css";
+import ExercisePageNewbies from "./pages/ExercisePageNewbies";
 
 function App() {
 	return (
 		<>
-			<h1>Coucou</h1>
+			<ExercisePageNewbies />
 		</>
 	);
 }
