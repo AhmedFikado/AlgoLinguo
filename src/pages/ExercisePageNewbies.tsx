@@ -1,12 +1,12 @@
 import { useState } from "react";
-interface Test {
+interface Quizz {
 	instruction: string;
 	rightAnswer: string[];
 	choices: string[];
 }
 
 function ExercisePageNewbies() {
-	const quizz: Test[] = [
+	const quizz: Quizz[] = [
 		{
 			instruction: "Affiche 'Hello World'",
 			rightAnswer: ["console.log('Hello World');"],

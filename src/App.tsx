@@ -1,11 +1,15 @@
+import { Outlet } from "react-router";
+import Header from "./components/Header";
 import "./App.css";
-import ExercisePageNewbies from "./pages/ExercisePageNewbies";
 
 function App() {
 	return (
-		<>
-			<ExercisePageNewbies />
-		</>
+		<section>
+			<Header />
+			<main>
+				<Outlet />
+			</main>
+		</section>
 	);
 }
 
