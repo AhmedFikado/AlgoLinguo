@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
+import confetti from "canvas-confetti";
+
 
 interface Quizz {
 	instruction: string;
@@ -11,7 +13,9 @@ function ExercisePageIntermediary() {
 	const quizz: Quizz[] = [
 		{
 			instruction: "Si x est supérieur à 10, afficher \"C'est grand!\"",
+
 			rightAnswer: ["if","(x > 10){", "console.log(", "\"C'est grand!\");}"],
+
 			choices: [
 				"(x > 10){",
 				"\"C'est grand!\");}",
@@ -81,8 +85,21 @@ function ExercisePageIntermediary() {
 			handleReset();
 		} else {
 			setFeedback("done");
+			sendConfettis();
 		}
 	};
+
+
+	// Confettis !!!
+	const sendConfettis = () => {
+		confetti({
+			particleCount: 550,
+			spread: 180,
+			origin: { y: 0.5 },
+			ticks: 2000,
+		});
+	}
+
 
 	return (
 		<main className="text-center min-h-[calc(100vh-100px)] px-2 py-8">
@@ -90,6 +107,7 @@ function ExercisePageIntermediary() {
 				<h2 className="font-bold text-2xl md:text-4xl">
 					{current.instruction}
 				</h2>
+
 
 <div className="relative bg-[#1E1E1E] rounded-2xl shadow-xl p-6 font-mono w-[80%]">
 	<div className="absolute top-4 left-4 flex space-x-2">
@@ -144,7 +162,11 @@ function ExercisePageIntermediary() {
 						<img
 							src="/assets/happy.png"
 							alt="avatar with happy face"
-							className="w-50 md:w-100"
+
+				
+
+							className="w-50 md:w-100 mt-7 md:mt-17 animate-bounce"
+
 						/>
 					</article>
 				)}

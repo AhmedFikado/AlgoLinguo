@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router";
 
+import confetti from "canvas-confetti";
+
+
 interface Quizz {
 	instruction: string;
 	rightAnswer: string[];
@@ -21,9 +24,9 @@ function ExercisePageMaster() {
 		},
 		{
 			instruction: "Parcourir le tableau de nombre \"arrayNumber\" et afficher la valeur double de chacun des nombres qui le composent",
-			rightAnswer: ["for","const number","of arrayNumber){", "console.log(", "number * 2);}"],
+			rightAnswer: ["for","(const number","of arrayNumber){", "console.log(", "number * 2);}"],
 			choices: [
-				"const number",
+				"(const number",
 				"console.log(",
 				"for",
 				"of arrayNumber){",
@@ -32,7 +35,7 @@ function ExercisePageMaster() {
 		},
 		{
 			instruction: "Créer une fonction qui renvoie \"vraie\" si x est pair et y est impair",
-			rightAnswer: ["function","evenAndOdd(x,y){", "if", "(x % 2 === 0", "&& y % 2 !== 0){","return true;}","else {","return false;}}"],
+			rightAnswer: ["function","evenAndOdd(x,y){", "if", "(x % 2 === 0", "&& y % 2 !== 0){","return true;}","else {","return false;}}."],
 			choices: [
 				"evenAndOdd(x,y){",
 				"return true;}",
@@ -84,8 +87,21 @@ function ExercisePageMaster() {
 			handleReset();
 		} else {
 			setFeedback("done");
+			sendConfettis();
 		}
 	};
+
+
+	// Confettis !!!
+	const sendConfettis = () => {
+		confetti({
+			particleCount: 550,
+			spread: 180,
+			origin: { y: 0.5 },
+			ticks: 2000,
+		});
+	}
+
 
 	return (
 		<main className="text-center min-h-[calc(100vh-100px)] px-2 py-8">
@@ -93,6 +109,7 @@ function ExercisePageMaster() {
 				<h2 className="font-bold text-2xl md:text-4xl">
 					{current.instruction}
 				</h2>
+
 
 <div className="relative bg-[#1E1E1E] rounded-2xl shadow-xl p-10 font-mono w-[80%]">
 	<div className="absolute top-4 left-4 flex space-x-2">
@@ -113,6 +130,7 @@ function ExercisePageMaster() {
 				</article>
 				</div>
 
+
 				<article className="flex justify-center gap-3 flex-wrap mt-4">
 					{current.choices.map((el) => (
 						<button
@@ -129,7 +147,9 @@ function ExercisePageMaster() {
 					<button
 						type="button"
 						onClick={handleValidate}
+
 						className="p-3 px-12 md:p-4 md:px-16 bg-primary text-white w-fit mx-auto rounded-2xl mt-4 text-lg md:text-xl hover:bg-[#326708]"
+
 					>
 						Valider
 					</button>
@@ -147,7 +167,9 @@ function ExercisePageMaster() {
 						<img
 							src="/assets/happy.png"
 							alt="avatar with happy face"
-							className="w-50 md:w-100"
+
+							className="w-50 md:w-100 mt-7 md:mt-17 animate-bounce"
+
 						/>
 					</article>
 				)}

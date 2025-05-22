@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
+import confetti from "canvas-confetti";
+
 interface Quizz {
 	instruction: string;
 	rightAnswer: string[];
@@ -9,28 +11,31 @@ interface Quizz {
 function ExercisePageNewbies() {
 	const quizz: Quizz[] = [
 		{
-			instruction: "Affiche 'Hello World'",
-			rightAnswer: ["console.log(", "'Hello World');"],
+
+			instruction: "Afficher 'Hello World'",
+			rightAnswer: ["console.log(","'Hello World');"],
 			choices: [
+				"'Hello World');",
 				"console.log(",
-				"'Hello World');"
-			
 			],
 		},
 		{
-			instruction: "Stocke la valeur 5 dans la variable x",
-			rightAnswer: ["const", "x", "=", "5;"],
-			choices: [
-				"x",
+			instruction: "Stocker la valeur 5 dans la variable x",
+			rightAnswer: ["const"," x ","=", " 5;"],
+			choices: [								
 				"=",
+				" 5;",
+				" x ",
 				"const",
-				"5;",
+
 			],
 		},
 		{
 			instruction: "Afficher la somme de deux nombres a et b",
-			rightAnswer: ["console.log(", "a", "+", "b);"],
-			choices: ["a", "b);", "console.log(", "+"],
+
+			rightAnswer: ["console.log(","a"," + ","b);"],
+			choices: [ "b);"," + ","console.log(", "a",],
+
 		},
 	];
 	const [userAnswer, setUserAnswer] = useState<string[]>([]);
@@ -72,8 +77,19 @@ function ExercisePageNewbies() {
 			handleReset();
 		} else {
 			setFeedback("done");
+			sendConfettis();
 		}
 	};
+
+	// Confettis !!!
+	const sendConfettis = () => {
+		confetti({
+			particleCount: 550,
+			spread: 180,
+			origin: { y: 0.5 },
+			ticks: 2000,
+		});
+	}
 
 	return (
 		<main className="text-center min-h-[calc(100vh-100px)] px-2 py-8">
@@ -134,7 +150,9 @@ function ExercisePageNewbies() {
 						<img
 							src="/assets/happy.png"
 							alt="avatar with happy face"
-							className="w-50 md:w-100 "
+
+							className="w-50 md:w-100 mt-7 md:mt-17 animate-bounce"
+
 						/>
 					</article>
 				)}
@@ -151,7 +169,9 @@ function ExercisePageNewbies() {
 						<img
 							src="/assets/sad.png"
 							alt="avatar with sad face"
-							className="w-50 md:w-100 "
+
+							className="w-50 md:w-100 animate-pulse"
+
 						/>
 					</article>
 				)}
@@ -167,7 +187,7 @@ function ExercisePageNewbies() {
 						<img
 							src="/assets/happy.png"
 							alt="avatar with happy face"
-							className="w-50 md:w-100"
+							className="w-50 md:w-100 mt-7 md:mt-17 animate-bounce"
 						/>
 					</article>
 				)}
