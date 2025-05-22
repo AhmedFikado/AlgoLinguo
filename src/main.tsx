@@ -6,22 +6,28 @@ import ExercisePageNewbies from "./pages/ExercisePageNewbies";
 import App from "./App.tsx";
 import Home from "./pages/Home";
 
-// import About from "./pages/About";
+import About from "./pages/About";
 
-/* ************************************************************************* */
+
+
+
 
 const router = createBrowserRouter([
 	{
 		element: <App />,
 		children: [
+
 			{
 			     path: "/",
 			    element: <Home />,
 		   },
-			//   {
-			//     path: "/About",
-			//     element: <About />,
-			//   },
+
+
+			 {
+			    path: "/About",
+			    element: <About />,
+			  },
+
 			{
 				path: "/exercice/newbie",
 				element: <ExercisePageNewbies />,
@@ -30,7 +36,7 @@ const router = createBrowserRouter([
 	},
 ]);
 
-/* ************************************************************************* */
+
 
 // Find the root element in the HTML document
 const rootElement = document.getElementById("root");
