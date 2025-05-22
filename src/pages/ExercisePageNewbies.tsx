@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
+import { useProgress } from "../hooks/ExerciseContext";
 interface Quizz {
 	instruction: string;
 	rightAnswer: string[];
@@ -7,6 +8,10 @@ interface Quizz {
 }
 
 function ExercisePageNewbies() {
+	const { setProgress } = useProgress();
+	const handleNewbiesDone = () => {
+		setProgress((el) => ({ ...el, newbie: true }));
+	};
 	const quizz: Quizz[] = [
 		{
 			instruction: "Affiche 'Hello World'",
@@ -76,6 +81,9 @@ function ExercisePageNewbies() {
 
 	return (
 		<main className="text-center min-h-[calc(100vh-100px)] px-2 py-8">
+			<button type="button" onClick={handleNewbiesDone} className="p-10 w-20">
+				TEEEEEEST
+			</button>
 			<section className="flex flex-col items-center gap-6 md:gap-10 max-w-3xl mx-auto">
 				<h2 className="font-bold text-2xl md:text-4xl">
 					{current.instruction}
