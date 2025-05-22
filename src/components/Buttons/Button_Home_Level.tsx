@@ -9,7 +9,9 @@ interface button_type {
 
 function Button_Home_Level({name, background, image, link}:button_type) {
     return (
-        <button type="button" className={` text-black shadow-sm text-2xl md:text-4xl lg:text-3xl font-semibold p-5 rounded-xl lg:cursor-pointer ${background}`}>
+      <Link
+      to={link}>
+        <button type="button" className={`text-black shadow-sm text-2xl md:text-4xl lg:text-3xl font-semibold p-5 rounded-xl lg:cursor-pointer ${background}`}>
 {image && (
         <img
           src={image}
@@ -17,8 +19,9 @@ function Button_Home_Level({name, background, image, link}:button_type) {
           />
         )}
         {name}
-        <Link to = {link}/>
+        
         </button>
+        </Link>
      );
 }
 
