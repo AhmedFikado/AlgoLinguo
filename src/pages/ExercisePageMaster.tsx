@@ -35,7 +35,7 @@ function ExercisePageMaster() {
 		},
 		{
 			instruction: "Créer une fonction qui renvoie \"vraie\" si x est pair et y est impair",
-			rightAnswer: ["function","evenAndOdd(x,y){", "if", "(x % 2 === 0", "&& y % 2 !== 0){","return true;}","else {","return false;}}."],
+			rightAnswer: ["function","evenAndOdd(x,y){", "if", "(x % 2 === 0", "&& y % 2 !== 0){","return true;}","else {","return false;}}"],
 			choices: [
 				"evenAndOdd(x,y){",
 				"return true;}",
@@ -186,7 +186,7 @@ function ExercisePageMaster() {
 						<img
 							src="/assets/sad.png"
 							alt="avatar with sad face"
-							className="w-50 md:w-100"
+							className="w-50 md:w-100 animate-pulse"
 						/>
 					</article>
 				)}
@@ -202,7 +202,7 @@ function ExercisePageMaster() {
 						<img
 							src="/assets/happy.png"
 							alt="avatar with happy face"
-							className="w-50 md:w-100"
+							className="w-50 md:w-100 mt-7 md:mt-17 animate-bounce"
 						/>
 					</article>
 				)}
