@@ -1,18 +1,20 @@
 import { useState } from "react";
+import { Link } from "react-router";
+
 interface Quizz {
 	instruction: string;
 	rightAnswer: string[];
 	choices: string[];
 }
 
-function ExercisePageNewbies() {
+function ExercisePageIntermediary() {
 	const quizz: Quizz[] = [
 		{
-			instruction: "Si x est supérieur à 10, afficher \"C\'est grand!\"",
-			rightAnswer: ["if","(x > 10){","console.log(","\"C\'est grand!\");}"],
+			instruction: "Si x est supérieur à 10, afficher \"C'est grand!\"",
+			rightAnswer: ["if","(x > 10){", "console.log(", "\"C'est grand!\");}"],
 			choices: [
 				"(x > 10){",
-				"\"C\'est grand!\");}",
+				"\"C'est grand!\");}",
 				"console.log(",
 				"if"
 			],
@@ -40,14 +42,18 @@ function ExercisePageNewbies() {
 			],
 		},
 	];
-	const [userAnswer, setUserAnswer] = useState<string[]>([]);
+		const [userAnswer, setUserAnswer] = useState<string[]>([]);
 	const [feedback, setFeedback] = useState<string>("");
 	const [question, setquestion] = useState(0);
 	const current = quizz[question];
+	const feedbackValue = ["valid", "invalid", "done"];
+	const showButton = feedbackValue.includes(feedback);
 
 	// This allows the answer to be displayed end by end
 	const handleClick = (newEl: string) => {
-		setUserAnswer([...userAnswer, newEl]);
+    if (userAnswer.length < current.rightAnswer.length) {
+        setUserAnswer([...userAnswer, newEl]);
+    }
 	};
 
 	// Allows to compare arrays
@@ -79,59 +85,104 @@ function ExercisePageNewbies() {
 	};
 
 	return (
-		<main className="text-center">
-			<h1 className="font-bold">{current.instruction}</h1>
+		<main className="text-center min-h-[calc(100vh-100px)] px-2 py-8">
+			<section className="flex flex-col items-center gap-6 md:gap-10 max-w-3xl mx-auto">
+				<h2 className="font-bold text-2xl md:text-4xl">
+					{current.instruction}
+				</h2>
 
-			<article>
-				{userAnswer.map((el) => (
-					<span key={el}> {el}</span>
-				))}
-			</article>
+<div className="relative bg-[#1E1E1E] rounded-2xl shadow-xl p-6 font-mono w-[80%]">
+	<div className="absolute top-4 left-4 flex space-x-2">
+    <span className="w-3 h-3 bg-red-500 rounded-full"/>
+    <span className="w-3 h-3 bg-yellow-500 rounded-full"/>
+    <span className="w-3 h-3 bg-green-500 rounded-full"/>
+	</div>
+				<article className="mt-4 flex flex-wrap justify-center gap-2">
+					{userAnswer.map((el) => (
+						<span
+							key={el}
+							className="px-0 py-1  text-white rounded-2xl text-lg md:text-xl"
+						>
+							{" "}
+							{el}
+						</span>
+					))}
+				</article>
+				</div>
 
-			<article>
-				{current.choices.map((el) => (
-					<button type="button" key={el} onClick={() => handleClick(el)}>
-						{el}
-					</button>
-				))}
-			</article>
-
-			<button type="button" onClick={handleValidate}>
-				Valider
-			</button>
-
-			{feedback === "valid" && (
-				<>
-					<h2>c'est good</h2>
-					<button type="button" onClick={handleNext}>
-						Question suivante
-					</button>
-				</>
-			)}
-
-			{feedback === "invalid" && (
-				<>
-					<h2>Pas good</h2>
-					<button type="button" onClick={handleReset}>
-						Réessayer
-					</button>
-				</>
-			)}
-			{feedback === "done" && (
-				<>
-					<h2>Tu as terminé tous les exercices de cette catégorie !</h2>
+				<article className="flex justify-center gap-3 flex-wrap mt-4">
+					{current.choices.map((el) => (
+						<button
+							type="button"
+							key={el}
+							onClick={() => handleClick(el)}
+							className="px-6 py-3 font-bold bg-amber-50 rounded-2xl text-lg md:text-xl hover:bg-amber-100 border-1 border-primary text-primary"
+						>
+							{el}
+						</button>
+					))}
+				</article>
+				{!showButton && (
 					<button
 						type="button"
-						onClick={() => {
-							setquestion(0);
-							handleReset();
-						}}
+						onClick={handleValidate}
+						className="p-3 px-12 md:p-4 md:px-16 bg-primary text-white w-fit mx-auto rounded-2xl mt-4 text-lg md:text-xl hover:bg-[#326708]"
 					>
-						Recommencer
+						Valider
 					</button>
-				</>
-			)}
+				)}
+
+				{feedback === "valid" && (
+					<article className="mt-6 flex flex-col items-center">
+						<button
+							type="button"
+							onClick={handleNext}
+							className="mt-2 px-12 p-3 md:p-4 md:px-16 bg-primary text-white rounded-2xl text-lg md:text-xl hover:bg-[#326708]"
+						>
+							Question suivante
+						</button>
+						<img
+							src="/assets/happy.png"
+							alt="avatar with happy face"
+							className="w-50 md:w-100"
+						/>
+					</article>
+				)}
+
+				{feedback === "invalid" && (
+					<article className="mt-6 flex flex-col items-center">
+						<button
+							type="button"
+							onClick={handleReset}
+							className="mt-2 p-3 px-12 md:p-4 md:px-16 bg-primary text-white rounded-2xl text-lg md:text-xl hover:bg-[#326708]"
+						>
+							Réessayer
+						</button>
+						<img
+							src="/assets/sad.png"
+							alt="avatar with sad face"
+							className="w-50 md:w-100"
+						/>
+					</article>
+				)}
+
+				{feedback === "done" && (
+					<article className="mt-6 flex flex-col items-center">
+						<Link
+							to="/"
+							className="mt-2 p-3 px-12 md:p-4 md:px-16 bg-primary text-white rounded-2xl text-lg md:text-xl hover:bg-[#326708]"
+						>
+							Retourner à l'accueil
+						</Link>
+						<img
+							src="/assets/happy.png"
+							alt="avatar with happy face"
+							className="w-50 md:w-100"
+						/>
+					</article>
+				)}
+			</section>
 		</main>
 	);
 }
-export default ExercisePageNewbies;
+export default ExercisePageIntermediary;

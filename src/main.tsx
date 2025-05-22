@@ -7,7 +7,8 @@ import App from "./App.tsx";
 import Home from "./pages/Home";
 
 import About from "./pages/About";
-
+import ExercisePageMaster from "./pages/ExercisePageMaster.tsx";
+import ExercisePageIntermediary from "./pages/ExercisePageIntermediary.tsx";
 
 
 
@@ -29,8 +30,18 @@ const router = createBrowserRouter([
 			  },
 
 			{
-				path: "/exercice/newbie",
+				path: "/exercice/newbies",
 				element: <ExercisePageNewbies />,
+			},
+
+			{
+				path: "/exercice/intermediaire",
+				element: <ExercisePageIntermediary />,
+			},
+
+			{
+				path: "/exercice/master",
+				element: <ExercisePageMaster />,
 			},
 		],
 	},
