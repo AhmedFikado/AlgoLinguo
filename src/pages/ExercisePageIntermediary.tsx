@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { useProgress } from "../hooks/ExerciseContext";
 import { Link } from "react-router";
 import confetti from "canvas-confetti";
-
 
 interface Quizz {
 	instruction: string;
@@ -10,43 +10,44 @@ interface Quizz {
 }
 
 function ExercisePageIntermediary() {
+	const { setProgress } = useProgress();
+	const handleIntermediaryDone = () => {
+		setProgress((el) => ({ ...el, intermediate: true }));
+	};
 	const quizz: Quizz[] = [
 		{
-			instruction: "Si x est supérieur à 10, afficher \"C'est grand!\"",
+			instruction: 'Si x est supérieur à 10, afficher "C\'est grand!"',
 
-			rightAnswer: ["if","(x > 10){", "console.log(", "\"C'est grand!\");}"],
+			rightAnswer: ["if", "(x > 10){", "console.log(", '"C\'est grand!");}'],
 
-			choices: [
-				"(x > 10){",
-				"\"C'est grand!\");}",
-				"console.log(",
-				"if"
-			],
+			choices: ["(x > 10){", '"C\'est grand!");}', "console.log(", "if"],
 		},
 		{
 			instruction: "Afficher tous les nombres de 0 à 10",
-			rightAnswer: ["for", "(let i = 0;", "i <= 10;", "i++){", "console.log(", "i);}"],
+			rightAnswer: [
+				"for",
+				"(let i = 0;",
+				"i <= 10;",
+				"i++){",
+				"console.log(",
+				"i);}",
+			],
 			choices: [
 				"i <= 10;",
 				"console.log(",
 				"for",
 				"i++){",
 				"(let i = 0;",
-				"i);}"
+				"i);}",
 			],
 		},
 		{
-			instruction: "Créer une fonction qui renvoie la phrase \"Hello World\" ",
-			rightAnswer: ["function","sayHello(){", "return", "\"Hello World\";}"],
-			choices: [
-				"return",
-				"function",
-				"\"Hello World\";}",
-				"sayHello(){",
-			],
+			instruction: 'Créer une fonction qui renvoie la phrase "Hello World" ',
+			rightAnswer: ["function", "sayHello(){", "return", '"Hello World";}'],
+			choices: ["return", "function", '"Hello World";}', "sayHello(){"],
 		},
 	];
-		const [userAnswer, setUserAnswer] = useState<string[]>([]);
+	const [userAnswer, setUserAnswer] = useState<string[]>([]);
 	const [feedback, setFeedback] = useState<string>("");
 	const [question, setquestion] = useState(0);
 	const current = quizz[question];
@@ -55,9 +56,9 @@ function ExercisePageIntermediary() {
 
 	// This allows the answer to be displayed end by end
 	const handleClick = (newEl: string) => {
-    if (userAnswer.length < current.rightAnswer.length) {
-        setUserAnswer([...userAnswer, newEl]);
-    }
+		if (userAnswer.length < current.rightAnswer.length) {
+			setUserAnswer([...userAnswer, newEl]);
+		}
 	};
 
 	// Allows to compare arrays
@@ -89,7 +90,6 @@ function ExercisePageIntermediary() {
 		}
 	};
 
-
 	// Confettis !!!
 	const sendConfettis = () => {
 		confetti({
@@ -98,8 +98,7 @@ function ExercisePageIntermediary() {
 			origin: { y: 0.5 },
 			ticks: 2000,
 		});
-	}
-
+	};
 
 	return (
 		<main className="text-center min-h-[calc(100vh-100px)] px-2 py-8">
@@ -108,24 +107,23 @@ function ExercisePageIntermediary() {
 					{current.instruction}
 				</h2>
 
-
-<div className="relative bg-[#1E1E1E] rounded-2xl shadow-xl p-6 font-mono w-[80%]">
-	<div className="absolute top-4 left-4 flex space-x-2">
-    <span className="w-3 h-3 bg-red-500 rounded-full"/>
-    <span className="w-3 h-3 bg-yellow-500 rounded-full"/>
-    <span className="w-3 h-3 bg-green-500 rounded-full"/>
-	</div>
-				<article className="mt-4 flex flex-wrap justify-center gap-2">
-					{userAnswer.map((el) => (
-						<span
-							key={el}
-							className="px-0 py-1  text-white rounded-2xl text-lg md:text-xl"
-						>
-							{" "}
-							{el}
-						</span>
-					))}
-				</article>
+				<div className="relative bg-[#1E1E1E] rounded-2xl shadow-xl p-6 font-mono w-[80%]">
+					<div className="absolute top-4 left-4 flex space-x-2">
+						<span className="w-3 h-3 bg-red-500 rounded-full" />
+						<span className="w-3 h-3 bg-yellow-500 rounded-full" />
+						<span className="w-3 h-3 bg-green-500 rounded-full" />
+					</div>
+					<article className="mt-4 flex flex-wrap justify-center gap-2">
+						{userAnswer.map((el) => (
+							<span
+								key={el}
+								className="px-0 py-1  text-white rounded-2xl text-lg md:text-xl"
+							>
+								{" "}
+								{el}
+							</span>
+						))}
+					</article>
 				</div>
 
 				<article className="flex justify-center gap-3 flex-wrap mt-4">
@@ -162,11 +160,7 @@ function ExercisePageIntermediary() {
 						<img
 							src="/assets/happy.png"
 							alt="avatar with happy face"
-
-				
-
 							className="w-50 md:w-100 mt-7 md:mt-17 animate-bounce"
-
 						/>
 					</article>
 				)}
@@ -193,6 +187,7 @@ function ExercisePageIntermediary() {
 						<Link
 							to="/"
 							className="mt-2 p-3 px-12 md:p-4 md:px-16 bg-primary text-white rounded-2xl text-lg md:text-xl hover:bg-[#326708]"
+							onClick={handleIntermediaryDone}
 						>
 							Retourner à l'accueil
 						</Link>
