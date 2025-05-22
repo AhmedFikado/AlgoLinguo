@@ -62,6 +62,10 @@ function ExercisePageMaster() {
     }
 	};
 
+	const handleMissClick = () => {
+		setUserAnswer(userAnswer.slice(0, -1));
+	};
+
 	// Allows to compare arrays
 	const handleValidate = () => {
 		if (JSON.stringify(userAnswer) === JSON.stringify(current.rightAnswer)) {
@@ -144,15 +148,23 @@ function ExercisePageMaster() {
 					))}
 				</article>
 				{!showButton && (
-					<button
-						type="button"
-						onClick={handleValidate}
+					<div className="flex gap-5 justify-center mt-5 ">
+						<button
+							type="button"
+							onClick={handleMissClick}
+							className="p-3 px-12 md:p-4 md:px-16 bg-primary text-white w-fit mx-auto rounded-2xl mt-4 text-lg md:text-xl hover:bg-[#326708]"
+						>
+							<img src="/assets/undo.png" alt="delete last input" className="invert w-7 h-7" />
+						</button>
 
-						className="p-3 px-12 md:p-4 md:px-16 bg-primary text-white w-fit mx-auto rounded-2xl mt-4 text-lg md:text-xl hover:bg-[#326708]"
-
-					>
-						Valider
-					</button>
+						<button
+							type="button"
+							onClick={handleValidate}
+							className="p-3 px-12 md:p-4 md:px-16 bg-primary text-white w-fit mx-auto rounded-2xl mt-4 text-lg md:text-xl hover:bg-[#326708]"
+						>
+							Valider
+						</button>
+					</div>
 				)}
 
 				{feedback === "valid" && (
