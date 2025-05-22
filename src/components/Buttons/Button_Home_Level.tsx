@@ -8,7 +8,13 @@ interface button_type {
 	progress?: boolean;
 }
 
-function Button_Home_Level({ name, background, image, link }: button_type) {
+function Button_Home_Level({
+	name,
+	background,
+	image,
+	link,
+	progress,
+}: button_type) {
 	return (
 		<Link to={link}>
 			<button
@@ -17,6 +23,13 @@ function Button_Home_Level({ name, background, image, link }: button_type) {
 			>
 				{image && <img src={image} alt={name} />}
 				{name}
+				{progress && (
+					<img
+						src="/images/check2-circle.svg"
+						alt="validate"
+						className="w-12 relative left-75"
+					/>
+				)}
 			</button>
 		</Link>
 	);

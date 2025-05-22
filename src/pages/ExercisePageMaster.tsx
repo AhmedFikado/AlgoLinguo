@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 
 import confetti from "canvas-confetti";
-
+import { useProgress } from "../hooks/ExerciseContext";
 
 interface Quizz {
 	instruction: string;
@@ -11,31 +11,48 @@ interface Quizz {
 }
 
 function ExercisePageMaster() {
+	const { setProgress } = useProgress();
+	const handleMasterDone = () => {
+		setProgress((el) => ({ ...el, master: true }));
+	};
 	const quizz: Quizz[] = [
 		{
-			instruction: "Créer une fonction qui renvoie le reste de la division de x par y",
-			rightAnswer: ["function","modulo(x,y){", "return", "x % y;}"],
-			choices: [
-				"modulo(x,y){",
-				"function",
-				"x % y;}",
-				"return"
-			],
+			instruction:
+				"Créer une fonction qui renvoie le reste de la division de x par y",
+			rightAnswer: ["function", "modulo(x,y){", "return", "x % y;}"],
+			choices: ["modulo(x,y){", "function", "x % y;}", "return"],
 		},
 		{
-			instruction: "Parcourir le tableau de nombre \"arrayNumber\" et afficher la valeur double de chacun des nombres qui le composent",
-			rightAnswer: ["for","(const number","of arrayNumber){", "console.log(", "number * 2);}"],
+			instruction:
+				'Parcourir le tableau de nombre "arrayNumber" et afficher la valeur double de chacun des nombres qui le composent',
+			rightAnswer: [
+				"for",
+				"(const number",
+				"of arrayNumber){",
+				"console.log(",
+				"number * 2);}",
+			],
 			choices: [
 				"(const number",
 				"console.log(",
 				"for",
 				"of arrayNumber){",
-				"number * 2);}"
+				"number * 2);}",
 			],
 		},
 		{
-			instruction: "Créer une fonction qui renvoie \"vraie\" si x est pair et y est impair",
-			rightAnswer: ["function","evenAndOdd(x,y){", "if", "(x % 2 === 0", "&& y % 2 !== 0){","return true;}","else {","return false;}}."],
+			instruction:
+				'Créer une fonction qui renvoie "vraie" si x est pair et y est impair',
+			rightAnswer: [
+				"function",
+				"evenAndOdd(x,y){",
+				"if",
+				"(x % 2 === 0",
+				"&& y % 2 !== 0){",
+				"return true;}",
+				"else {",
+				"return false;}}.",
+			],
 			choices: [
 				"evenAndOdd(x,y){",
 				"return true;}",
@@ -44,11 +61,11 @@ function ExercisePageMaster() {
 				"function",
 				"(x % 2 === 0",
 				"if",
-				"else {"
+				"else {",
 			],
 		},
 	];
-		const [userAnswer, setUserAnswer] = useState<string[]>([]);
+	const [userAnswer, setUserAnswer] = useState<string[]>([]);
 	const [feedback, setFeedback] = useState<string>("");
 	const [question, setquestion] = useState(0);
 	const current = quizz[question];
@@ -57,9 +74,9 @@ function ExercisePageMaster() {
 
 	// This allows the answer to be displayed end by end
 	const handleClick = (newEl: string) => {
-    if (userAnswer.length < current.rightAnswer.length) {
-        setUserAnswer([...userAnswer, newEl]);
-    }
+		if (userAnswer.length < current.rightAnswer.length) {
+			setUserAnswer([...userAnswer, newEl]);
+		}
 	};
 
 	// Allows to compare arrays
@@ -91,7 +108,6 @@ function ExercisePageMaster() {
 		}
 	};
 
-
 	// Confettis !!!
 	const sendConfettis = () => {
 		confetti({
@@ -100,8 +116,7 @@ function ExercisePageMaster() {
 			origin: { y: 0.5 },
 			ticks: 2000,
 		});
-	}
-
+	};
 
 	return (
 		<main className="text-center min-h-[calc(100vh-100px)] px-2 py-8">
@@ -110,26 +125,24 @@ function ExercisePageMaster() {
 					{current.instruction}
 				</h2>
 
-
-<div className="relative bg-[#1E1E1E] rounded-2xl shadow-xl p-10 font-mono w-[80%]">
-	<div className="absolute top-4 left-4 flex space-x-2">
-    <span className="w-3 h-3 bg-red-500 rounded-full"/>
-    <span className="w-3 h-3 bg-yellow-500 rounded-full"/>
-    <span className="w-3 h-3 bg-green-500 rounded-full"/>
-	</div>
-				<article className="mt-4 flex flex-wrap justify-center gap-2">
-					{userAnswer.map((el) => (
-						<span
-							key={el}
-							className="px-0 py-1  text-white rounded-2xl text-lg md:text-xl"
-						>
-							{" "}
-							{el}
-						</span>
-					))}
-				</article>
+				<div className="relative bg-[#1E1E1E] rounded-2xl shadow-xl p-10 font-mono w-[80%]">
+					<div className="absolute top-4 left-4 flex space-x-2">
+						<span className="w-3 h-3 bg-red-500 rounded-full" />
+						<span className="w-3 h-3 bg-yellow-500 rounded-full" />
+						<span className="w-3 h-3 bg-green-500 rounded-full" />
+					</div>
+					<article className="mt-4 flex flex-wrap justify-center gap-2">
+						{userAnswer.map((el) => (
+							<span
+								key={el}
+								className="px-0 py-1  text-white rounded-2xl text-lg md:text-xl"
+							>
+								{" "}
+								{el}
+							</span>
+						))}
+					</article>
 				</div>
-
 
 				<article className="flex justify-center gap-3 flex-wrap mt-4">
 					{current.choices.map((el) => (
@@ -147,9 +160,7 @@ function ExercisePageMaster() {
 					<button
 						type="button"
 						onClick={handleValidate}
-
 						className="p-3 px-12 md:p-4 md:px-16 bg-primary text-white w-fit mx-auto rounded-2xl mt-4 text-lg md:text-xl hover:bg-[#326708]"
-
 					>
 						Valider
 					</button>
@@ -167,9 +178,7 @@ function ExercisePageMaster() {
 						<img
 							src="/assets/happy.png"
 							alt="avatar with happy face"
-
 							className="w-50 md:w-100 mt-7 md:mt-17 animate-bounce"
-
 						/>
 					</article>
 				)}
@@ -196,6 +205,7 @@ function ExercisePageMaster() {
 						<Link
 							to="/"
 							className="mt-2 p-3 px-12 md:p-4 md:px-16 bg-primary text-white rounded-2xl text-lg md:text-xl hover:bg-[#326708]"
+							onClick={handleMasterDone}
 						>
 							Retourner à l'accueil
 						</Link>

@@ -102,13 +102,6 @@ function ExercisePageIntermediary() {
 
 	return (
 		<main className="text-center min-h-[calc(100vh-100px)] px-2 py-8">
-			<button
-				type="button"
-				onClick={handleIntermediaryDone}
-				className="p-20 w-200"
-			>
-				AUTRE TESSST
-			</button>
 			<section className="flex flex-col items-center gap-6 md:gap-10 max-w-3xl mx-auto">
 				<h2 className="font-bold text-2xl md:text-4xl">
 					{current.instruction}
@@ -194,6 +187,7 @@ function ExercisePageIntermediary() {
 						<Link
 							to="/"
 							className="mt-2 p-3 px-12 md:p-4 md:px-16 bg-primary text-white rounded-2xl text-lg md:text-xl hover:bg-[#326708]"
+							onClick={handleIntermediaryDone}
 						>
 							Retourner à l'accueil
 						</Link>
