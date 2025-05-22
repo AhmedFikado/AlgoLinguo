@@ -8,24 +8,17 @@ interface button_type {
 	progress?: boolean;
 }
 
-function Button_Home_Level({
-	name,
-	background,
-	image,
-	link,
-	// progress,
-}: button_type) {
+function Button_Home_Level({ name, background, image, link }: button_type) {
 	return (
-		<>
+		<Link to={link}>
 			<button
 				type="button"
-				className={` text-black shadow-sm text-2xl md:text-4xl lg:text-3xl font-semibold p-5 rounded-xl lg:cursor-pointer ${background}`}
+				className={`text-black shadow-sm text-2xl md:text-4xl lg:text-3xl font-semibold p-5 rounded-xl lg:cursor-pointer ${background}`}
 			>
 				{image && <img src={image} alt={name} />}
 				{name}
-				<Link to={link} />
 			</button>
-		</>
+		</Link>
 	);
 }
 

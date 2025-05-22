@@ -10,21 +10,21 @@ function Home() {
 					name="Débutant"
 					background="bg-yellow-300"
 					image="\images\avatar-bebe.webp"
-					link=""
+					link="/exercice/newbies"
 					progress={progress.newbie}
-				/>{" "}
+				/>
 				<Button_Home_Level
 					name="Intermédiaire"
 					background="bg-orange-300"
 					image="\images\avatar-etudiant.webp"
-					link=""
+					link="/exercice/intermediaire"
 					progress={progress.intermediate}
 				/>
 				<Button_Home_Level
 					name="Difficile"
 					background="bg-red-300"
 					image="\images\avatar-senior.webp"
-					link=""
+					link="/exercice/master"
 					progress={progress.master}
 				/>
 			</div>

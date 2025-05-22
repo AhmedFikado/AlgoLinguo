@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { useProgress } from "../hooks/ExerciseContext";
+import confetti from "canvas-confetti";
+
 interface Quizz {
 	instruction: string;
 	rightAnswer: string[];
@@ -14,29 +16,20 @@ function ExercisePageNewbies() {
 	};
 	const quizz: Quizz[] = [
 		{
-			instruction: "Affiche 'Hello World'",
-			rightAnswer: ["console.log('Hello World');"],
-			choices: [
-				"console.log('Hello World');",
-				"for (let i = 0; i < 3; i++) {",
-				"console.log(i);",
-			],
+			instruction: "Afficher 'Hello World'",
+			rightAnswer: ["console.log(", "'Hello World');"],
+			choices: ["'Hello World');", "console.log("],
 		},
 		{
-			instruction: "Affiche la somme de deux nombres a et b",
-			rightAnswer: ["function (a, b) {", "return a + b }"],
-			choices: [
-				"function ((a)(b)) {",
-				"  console.log(ab);",
-				"console.log('Bonjour');",
-				"function (a, b) {",
-				"return a + b }",
-			],
+			instruction: "Stocker la valeur 5 dans la variable x",
+			rightAnswer: ["const", " x ", "=", " 5;"],
+			choices: ["=", " 5;", " x ", "const"],
 		},
 		{
-			instruction: "Crée une variable 'age' et donne-lui la valeur 10",
-			rightAnswer: ["let age = 10;"],
-			choices: ["let age = 10;", "let age = 'dix';", "age = 10;"],
+			instruction: "Afficher la somme de deux nombres a et b",
+
+			rightAnswer: ["console.log(", "a", " + ", "b);"],
+			choices: ["b);", " + ", "console.log(", "a"],
 		},
 	];
 	const [userAnswer, setUserAnswer] = useState<string[]>([]);
@@ -48,7 +41,9 @@ function ExercisePageNewbies() {
 
 	// This allows the answer to be displayed end by end
 	const handleClick = (newEl: string) => {
-		setUserAnswer([...userAnswer, newEl]);
+		if (userAnswer.length < current.rightAnswer.length) {
+			setUserAnswer([...userAnswer, newEl]);
+		}
 	};
 
 	// Allows to compare arrays
@@ -76,7 +71,18 @@ function ExercisePageNewbies() {
 			handleReset();
 		} else {
 			setFeedback("done");
+			sendConfettis();
 		}
+	};
+
+	// Confettis !!!
+	const sendConfettis = () => {
+		confetti({
+			particleCount: 550,
+			spread: 180,
+			origin: { y: 0.5 },
+			ticks: 2000,
+		});
 	};
 
 	return (
@@ -88,18 +94,24 @@ function ExercisePageNewbies() {
 				<h2 className="font-bold text-2xl md:text-4xl">
 					{current.instruction}
 				</h2>
-
-				<article className="mt-4 flex flex-wrap justify-center gap-2">
-					{userAnswer.map((el) => (
-						<span
-							key={el}
-							className="px-3 py-1 border-1 border-black bg-amber-50 rounded-2xl text-lg md:text-xl"
-						>
-							{" "}
-							{el}
-						</span>
-					))}
-				</article>
+				<div className="relative bg-[#1E1E1E] rounded-2xl shadow-xl p-10 font-mono w-[80%]">
+					<div className="absolute top-4 left-4 flex space-x-2">
+						<span className="w-3 h-3 bg-red-500 rounded-full" />
+						<span className="w-3 h-3 bg-yellow-500 rounded-full" />
+						<span className="w-3 h-3 bg-green-500 rounded-full" />
+					</div>
+					<article className="mt-4 flex flex-wrap justify-center gap-2">
+						{userAnswer.map((el) => (
+							<span
+								key={el}
+								className="px-0 py-1  text-white rounded-2xl text-lg md:text-xl "
+							>
+								{" "}
+								{el}
+							</span>
+						))}
+					</article>
+				</div>
 
 				<article className="flex justify-center gap-3 flex-wrap mt-4">
 					{current.choices.map((el) => (
@@ -135,7 +147,7 @@ function ExercisePageNewbies() {
 						<img
 							src="/assets/happy.png"
 							alt="avatar with happy face"
-							className="w-50 md:w-100"
+							className="w-50 md:w-100 mt-7 md:mt-17 animate-bounce"
 						/>
 					</article>
 				)}
@@ -152,7 +164,7 @@ function ExercisePageNewbies() {
 						<img
 							src="/assets/sad.png"
 							alt="avatar with sad face"
-							className="w-50 md:w-100"
+							className="w-50 md:w-100 animate-pulse"
 						/>
 					</article>
 				)}
@@ -168,7 +180,7 @@ function ExercisePageNewbies() {
 						<img
 							src="/assets/happy.png"
 							alt="avatar with happy face"
-							className="w-50 md:w-100"
+							className="w-50 md:w-100 mt-7 md:mt-17 animate-bounce"
 						/>
 					</article>
 				)}
