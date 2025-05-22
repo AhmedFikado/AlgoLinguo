@@ -19,7 +19,7 @@ function Button_Home_Level({
 		<Link to={link}>
 			<button
 				type="button"
-				className={`text-black shadow-sm text-2xl md:text-4xl lg:text-3xl font-semibold p-5 rounded-xl lg:cursor-pointer ${background}`}
+				className={`text-black shadow-sm text-2xl md:text-4xl lg:text-3xl font-semibold p-5 flex flex-col items-center rounded-xl lg:cursor-pointer ${background}`}
 			>
 				{image && <img src={image} alt={name} />}
 				{name}
@@ -27,7 +27,7 @@ function Button_Home_Level({
 					<img
 						src="/images/check2-circle.svg"
 						alt="validate"
-						className="w-12 relative left-75"
+						className="w-6 md:w-12 pt-3 md:pt-6"
 					/>
 				)}
 			</button>
