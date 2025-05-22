@@ -1,9 +1,10 @@
 import "./App.css";
+import About from "./pages/About";
 
 function App() {
 	return (
 		<>
-			<h1>Coucou</h1>
+			<About/>
 		</>
 	);
 }
