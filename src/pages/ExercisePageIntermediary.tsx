@@ -147,7 +147,7 @@ function ExercisePageIntermediary() {
 						<img
 							src="/assets/happy.png"
 							alt="avatar with happy face"
-							className="w-50 md:w-100"
+							className="w-50 md:w-100 mt-7 md:mt-17 animate-bounce"
 						/>
 					</article>
 				)}
