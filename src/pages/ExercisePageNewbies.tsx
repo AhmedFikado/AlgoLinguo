@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
+import { useProgress } from "../hooks/ExerciseContext";
 import confetti from "canvas-confetti";
 
 interface Quizz {
@@ -9,6 +10,10 @@ interface Quizz {
 }
 
 function ExercisePageNewbies() {
+	const { setProgress } = useProgress();
+	const handleNewbiesDone = () => {
+		setProgress((el) => ({ ...el, newbie: true }));
+	};
 	const quizz: Quizz[] = [
 		{
 			instruction: "Afficher 'Hello World'",
@@ -39,10 +44,12 @@ function ExercisePageNewbies() {
 		if (userAnswer.length < current.rightAnswer.length) {
 			setUserAnswer([...userAnswer, newEl]);
 		}
+
 	};
 
 	const handleMissClick = () => {
 		setUserAnswer(userAnswer.slice(0, -1));
+
 	};
 
 	// Allows to compare arrays
@@ -180,6 +187,7 @@ function ExercisePageNewbies() {
 						<Link
 							to="/"
 							className="mt-2 p-3 px-12 md:p-4 md:px-16 bg-primary text-white rounded-2xl text-lg md:text-xl hover:bg-[#326708]"
+							onClick={handleNewbiesDone}
 						>
 							Retourner à l'accueil
 						</Link>

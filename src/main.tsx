@@ -7,6 +7,7 @@ import App from "./App.tsx";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Merch from "./pages/Merch.tsx";
+import NotFound from "./pages/NotFound.tsx";
 import ExercisePageMaster from "./pages/ExercisePageMaster.tsx";
 import ExercisePageIntermediary from "./pages/ExercisePageIntermediary.tsx";
 
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
 			{
 				path: "/exercice/master",
 				element: <ExercisePageMaster />,
+			},
+			{
+				path: "*",
+				element: <NotFound />,
 			},
 		],
 	},
