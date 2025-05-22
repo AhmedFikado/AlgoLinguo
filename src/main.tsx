@@ -5,7 +5,7 @@ import "./index.css";
 import ExercisePageNewbies from "./pages/ExercisePageNewbies";
 import App from "./App.tsx";
 
-// import About from "./pages/About";
+import About from "./pages/About";
 // import Home from "./pages/Home";
 
 /* ************************************************************************* */
@@ -18,10 +18,10 @@ const router = createBrowserRouter([
 			//     path: "/",
 			//     element: <Home />,
 			//   },
-			//   {
-			//     path: "/About",
-			//     element: <About />,
-			//   },
+			 {
+			    path: "/About",
+			    element: <About />,
+			  },
 			{
 				path: "/",
 				element: <ExercisePageNewbies />,
