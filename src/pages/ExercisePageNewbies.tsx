@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
+import { useProgress } from "../hooks/ExerciseContext";
 import confetti from "canvas-confetti";
 
 interface Quizz {
@@ -9,33 +10,26 @@ interface Quizz {
 }
 
 function ExercisePageNewbies() {
+	const { setProgress } = useProgress();
+	const handleNewbiesDone = () => {
+		setProgress((el) => ({ ...el, newbie: true }));
+	};
 	const quizz: Quizz[] = [
 		{
-
 			instruction: "Afficher 'Hello World'",
-			rightAnswer: ["console.log(","'Hello World');"],
-			choices: [
-				"'Hello World');",
-				"console.log(",
-			],
+			rightAnswer: ["console.log(", "'Hello World');"],
+			choices: ["'Hello World');", "console.log("],
 		},
 		{
 			instruction: "Stocker la valeur 5 dans la variable x",
-			rightAnswer: ["const"," x ","=", " 5;"],
-			choices: [								
-				"=",
-				" 5;",
-				" x ",
-				"const",
-
-			],
+			rightAnswer: ["const", " x ", "=", " 5;"],
+			choices: ["=", " 5;", " x ", "const"],
 		},
 		{
 			instruction: "Afficher la somme de deux nombres a et b",
 
-			rightAnswer: ["console.log(","a"," + ","b);"],
-			choices: [ "b);"," + ","console.log(", "a",],
-
+			rightAnswer: ["console.log(", "a", " + ", "b);"],
+			choices: ["b);", " + ", "console.log(", "a"],
 		},
 	];
 	const [userAnswer, setUserAnswer] = useState<string[]>([]);
@@ -47,9 +41,9 @@ function ExercisePageNewbies() {
 
 	// This allows the answer to be displayed end by end
 	const handleClick = (newEl: string) => {
-    if (userAnswer.length < current.rightAnswer.length) {
-        setUserAnswer([...userAnswer, newEl]);
-    }
+		if (userAnswer.length < current.rightAnswer.length) {
+			setUserAnswer([...userAnswer, newEl]);
+		}
 	};
 
 	// Allows to compare arrays
@@ -89,7 +83,7 @@ function ExercisePageNewbies() {
 			origin: { y: 0.5 },
 			ticks: 2000,
 		});
-	}
+	};
 
 	return (
 		<main className="text-center min-h-[calc(100vh-100px)] px-2 py-8">
@@ -97,24 +91,24 @@ function ExercisePageNewbies() {
 				<h2 className="font-bold text-2xl md:text-4xl">
 					{current.instruction}
 				</h2>
-<div className="relative bg-[#1E1E1E] rounded-2xl shadow-xl p-10 font-mono w-[80%]">
-	<div className="absolute top-4 left-4 flex space-x-2">
-    <span className="w-3 h-3 bg-red-500 rounded-full"/>
-    <span className="w-3 h-3 bg-yellow-500 rounded-full"/>
-    <span className="w-3 h-3 bg-green-500 rounded-full"/>
-	</div>
-				<article className="mt-4 flex flex-wrap justify-center gap-2">
-					{userAnswer.map((el) => (
-						<span
-							key={el}
-							className="px-0 py-1  text-white rounded-2xl text-lg md:text-xl "
-						>
-							{" "}
-							{el}
-						</span>
-					))}
-				</article>
+				<div className="relative bg-[#1E1E1E] rounded-2xl shadow-xl p-10 font-mono w-[80%]">
+					<div className="absolute top-4 left-4 flex space-x-2">
+						<span className="w-3 h-3 bg-red-500 rounded-full" />
+						<span className="w-3 h-3 bg-yellow-500 rounded-full" />
+						<span className="w-3 h-3 bg-green-500 rounded-full" />
 					</div>
+					<article className="mt-4 flex flex-wrap justify-center gap-2">
+						{userAnswer.map((el) => (
+							<span
+								key={el}
+								className="px-0 py-1  text-white rounded-2xl text-lg md:text-xl "
+							>
+								{" "}
+								{el}
+							</span>
+						))}
+					</article>
+				</div>
 
 				<article className="flex justify-center gap-3 flex-wrap mt-4">
 					{current.choices.map((el) => (
@@ -150,9 +144,7 @@ function ExercisePageNewbies() {
 						<img
 							src="/assets/happy.png"
 							alt="avatar with happy face"
-
 							className="w-50 md:w-100 mt-7 md:mt-17 animate-bounce"
-
 						/>
 					</article>
 				)}
@@ -169,9 +161,7 @@ function ExercisePageNewbies() {
 						<img
 							src="/assets/sad.png"
 							alt="avatar with sad face"
-
 							className="w-50 md:w-100 animate-pulse"
-
 						/>
 					</article>
 				)}
@@ -181,6 +171,7 @@ function ExercisePageNewbies() {
 						<Link
 							to="/"
 							className="mt-2 p-3 px-12 md:p-4 md:px-16 bg-primary text-white rounded-2xl text-lg md:text-xl hover:bg-[#326708]"
+							onClick={handleNewbiesDone}
 						>
 							Retourner à l'accueil
 						</Link>
