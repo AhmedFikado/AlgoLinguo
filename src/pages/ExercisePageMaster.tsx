@@ -132,7 +132,7 @@ function ExercisePageMaster() {
 					<button
 						type="button"
 						onClick={handleValidate}
-						className="p-3 px-12 md:p-4 md:px-16 bg-primary text-white w-fit mx-auto rounded-2xl mt-4 text-lg md:text-xl hover:bg-[#326708]"
+						className="p-3 px-12 md:p-4 md:px-16 bg-primary text-white w-fit mx-auto rounded-2xl mt-4 text-lg md:text-xl hover:bg-[#326708] "
 					>
 						Valider
 					</button>
@@ -150,7 +150,7 @@ function ExercisePageMaster() {
 						<img
 							src="/assets/happy.png"
 							alt="avatar with happy face"
-							className="w-50 md:w-100"
+							className="w-50 md:w-100 mt-7 md:mt-17 animate-bounce"
 						/>
 					</article>
 				)}
