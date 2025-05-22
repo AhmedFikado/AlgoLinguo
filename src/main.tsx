@@ -4,9 +4,9 @@ import { RouterProvider, createBrowserRouter } from "react-router";
 import "./index.css";
 import ExercisePageNewbies from "./pages/ExercisePageNewbies";
 import App from "./App.tsx";
+import Home from "./pages/Home";
 
 // import About from "./pages/About";
-// import Home from "./pages/Home";
 
 /* ************************************************************************* */
 
@@ -14,16 +14,16 @@ const router = createBrowserRouter([
 	{
 		element: <App />,
 		children: [
-			//   {
-			//     path: "/",
-			//     element: <Home />,
-			//   },
+			{
+			     path: "/",
+			    element: <Home />,
+		   },
 			//   {
 			//     path: "/About",
 			//     element: <About />,
 			//   },
 			{
-				path: "/",
+				path: "/exercice/newbie",
 				element: <ExercisePageNewbies />,
 			},
 		],

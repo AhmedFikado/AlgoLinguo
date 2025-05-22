@@ -2,17 +2,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap");
 @import "tailwindcss";
 
-/* @theme {
+@theme {
 	--color-primary: #4da707;
 	--color-secondary: #e8fdbc;
 	--color-tertiary: #1e1e1e;
-} */
+}
 
 * {
 	box-sizing: border-box;
-	background-color: #e8fdbc;
+	font-family: "Dosis", sans-serif;
 }
 body {
+	background-color: #e8fdbc;
 	margin: 0;
 }
 
@@ -20,6 +21,3 @@ h1 {
 	font-family: "Jersey 15", sans-serif;
 }
 
-p {
-	font-family: "Dosis", sans-serif;
-}
