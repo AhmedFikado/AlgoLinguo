@@ -5,38 +5,34 @@ import "./index.css";
 import ExercisePageNewbies from "./pages/ExercisePageNewbies";
 import App from "./App.tsx";
 import Home from "./pages/Home";
-
 import About from "./pages/About";
-
-
-
-
+import Merch from "./pages/Merch.tsx";
 
 const router = createBrowserRouter([
 	{
 		element: <App />,
 		children: [
+			{
+				path: "/",
+				element: <Home />,
+			},
 
 			{
-			     path: "/",
-			    element: <Home />,
-		   },
-
-
-			 {
-			    path: "/About",
-			    element: <About />,
-			  },
+				path: "/about",
+				element: <About />,
+			},
 
 			{
 				path: "/exercice/newbie",
 				element: <ExercisePageNewbies />,
 			},
+			{
+				path: "/merch",
+				element: <Merch />,
+			},
 		],
 	},
 ]);
-
-
 
 // Find the root element in the HTML document
 const rootElement = document.getElementById("root");
