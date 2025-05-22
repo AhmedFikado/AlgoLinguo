@@ -11,7 +11,7 @@ interface Quizz {
 function ExercisePageNewbies() {
 	const quizz: Quizz[] = [
 		{
-			instruction: "Affiche 'Hello World'",
+			instruction: "Afficher 'Hello World'",
 			rightAnswer: ["console.log(","'Hello World');"],
 			choices: [
 				"'Hello World');",

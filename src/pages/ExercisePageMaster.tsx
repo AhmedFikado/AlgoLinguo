@@ -33,7 +33,7 @@ function ExercisePageMaster() {
 		},
 		{
 			instruction: "Créer une fonction qui renvoie \"vraie\" si x est pair et y est impair",
-			rightAnswer: ["function","evenAndOdd(x,y){", "if", "(x % 2 === 0", "&& y % 2 !== 0){","return true;}","else {","return false;}}"],
+			rightAnswer: ["function","evenAndOdd(x,y){", "if", "(x % 2 === 0", "&& y % 2 !== 0){","return true;}","else {","return false;}}."],
 			choices: [
 				"evenAndOdd(x,y){",
 				"return true;}",
