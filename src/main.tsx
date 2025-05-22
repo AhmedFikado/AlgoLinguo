@@ -31,6 +31,7 @@ const router = createBrowserRouter([
 			{
 				path: "/merch",
 				element: <Merch />,
+			},
 			{
 				path: "/exercice/intermediaire",
 				element: <ExercisePageIntermediary />,
