@@ -13,8 +13,8 @@ function Header() {
 			<Link to="/merch">
 				<img
 					src="/images/cart2.svg"
-					alt="A propos"
-					className="lg:hidden w-[45px] invert cursor-pointer"
+					alt="Shop"
+					className="lg:hidden w-[45px] pb-1 invert cursor-pointer"
 				/>
 			</Link>
 			<Link to="/about">
@@ -25,7 +25,7 @@ function Header() {
 				/>
 			</Link>
 			<Link to="/about">
-				<p className="max-lg:hidden text-white text-2xl underline mr-60 cursor-pointer">
+				<p className="max-lg:hidden text-white text-2xl underline mr-60 cursor-pointer hover:text-green-100">
 					About
 				</p>
 			</Link>
