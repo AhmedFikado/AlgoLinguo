@@ -5,7 +5,7 @@ function Home() {
 	const { progress } = useProgress();
 	return (
 		<section>
-			<div className="mt-15 lg:mt-30 mx-25 grid gap-10 md:mx-auto md:w-1/2 lg:w-5/8 lg:flex ">
+			<div className="mt-15 lg:mt-30 mx-25 grid gap-10 md:mx-auto md:w-1/2 lg:w-5/8 lg:flex animate-fade-in">
 				<Button_Home_Level
 					name="Débutant"
 					background="bg-yellow-300"
