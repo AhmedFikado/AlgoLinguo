@@ -123,7 +123,7 @@ function ExercisePageMaster() {
 	};
 
 	return (
-		<main className="text-center min-h-[calc(100vh-100px)] px-2 py-8">
+		<main className="text-center min-h-[calc(100vh-100px)] px-2 py-8 animate-fade-in">
 			<section className="flex flex-col items-center gap-6 md:gap-10 max-w-3xl mx-auto">
 				<h2 className="font-bold text-2xl md:text-4xl">
 					{current.instruction}
@@ -139,7 +139,7 @@ function ExercisePageMaster() {
 						{userAnswer.map((el) => (
 							<span
 								key={el}
-								className="px-0 py-1  text-white rounded-2xl text-lg md:text-xl"
+								className="px-0 py-1  text-white rounded-2xl text-lg md:text-xl animate-fade-in-answer"
 							>
 								{" "}
 								{el}
@@ -161,14 +161,17 @@ function ExercisePageMaster() {
 					))}
 				</article>
 				{!showButton && (
-
 					<div className="flex gap-5 justify-center mt-5 ">
 						<button
 							type="button"
 							onClick={handleMissClick}
 							className="cursor-pointer p-3 px-12 md:p-4 md:px-16 bg-primary text-white w-fit mx-auto rounded-2xl mt-4 text-lg md:text-xl hover:bg-[#326708]"
 						>
-							<img src="/assets/undo.png" alt="delete last input" className="invert w-7 h-7" />
+							<img
+								src="/assets/undo.png"
+								alt="delete last input"
+								className="invert w-7 h-7"
+							/>
 						</button>
 
 						<button
@@ -179,11 +182,10 @@ function ExercisePageMaster() {
 							Valider
 						</button>
 					</div>
-
 				)}
 
 				{feedback === "valid" && (
-					<article className="mt-6 flex flex-col items-center">
+					<article className="mt-6 flex flex-col items-center animate-fade-in">
 						<button
 							type="button"
 							onClick={handleNext}
@@ -200,7 +202,7 @@ function ExercisePageMaster() {
 				)}
 
 				{feedback === "invalid" && (
-					<article className="mt-6 flex flex-col items-center">
+					<article className="mt-6 flex flex-col items-center animate-fade-in">
 						<button
 							type="button"
 							onClick={handleReset}
@@ -217,7 +219,7 @@ function ExercisePageMaster() {
 				)}
 
 				{feedback === "done" && (
-					<article className="mt-6 flex flex-col items-center">
+					<article className="mt-6 flex flex-col items-center animate-fade-in">
 						<Link
 							to="/"
 							className="mt-2 p-3 px-12 md:p-4 md:px-16 bg-primary text-white rounded-2xl text-lg md:text-xl hover:bg-[#326708]"
