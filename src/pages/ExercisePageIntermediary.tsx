@@ -136,7 +136,7 @@ function ExercisePageIntermediary() {
 							type="button"
 							key={el}
 							onClick={() => handleClick(el)}
-							className="px-6 py-3 font-bold bg-amber-50 rounded-2xl text-lg md:text-xl hover:bg-amber-100 border-1 border-primary text-primary"
+							className="cursor-pointer px-6 py-3 font-bold bg-amber-50 rounded-2xl text-lg md:text-xl hover:bg-amber-100 border-1 border-primary text-primary"
 						>
 							{el}
 						</button>
@@ -147,7 +147,7 @@ function ExercisePageIntermediary() {
 						<button
 							type="button"
 							onClick={handleMissClick}
-							className="p-3 px-12 md:p-4 md:px-16 bg-primary text-white w-fit mx-auto rounded-2xl mt-4 text-lg md:text-xl hover:bg-[#326708]"
+							className="cursor-pointer p-3 px-12 md:p-4 md:px-16 bg-primary text-white w-fit mx-auto rounded-2xl mt-4 text-lg md:text-xl hover:bg-[#326708]"
 						>
 							<img src="/assets/undo.png" alt="delete last input" className="invert w-7 h-7" />
 						</button>
@@ -155,7 +155,7 @@ function ExercisePageIntermediary() {
 						<button
 							type="button"
 							onClick={handleValidate}
-							className="p-3 px-12 md:p-4 md:px-16 bg-primary text-white w-fit mx-auto rounded-2xl mt-4 text-lg md:text-xl hover:bg-[#326708]"
+							className="cursor-pointer p-3 px-12 md:p-4 md:px-16 bg-primary text-white w-fit mx-auto rounded-2xl mt-4 text-lg md:text-xl hover:bg-[#326708]"
 						>
 							Valider
 						</button>
@@ -167,14 +167,14 @@ function ExercisePageIntermediary() {
 						<button
 							type="button"
 							onClick={handleNext}
-							className="mt-2 px-12 p-3 md:p-4 md:px-16 bg-primary text-white rounded-2xl text-lg md:text-xl hover:bg-[#326708]"
+							className="cursor-pointer mt-2 px-12 p-3 md:p-4 md:px-16 bg-primary text-white rounded-2xl text-lg md:text-xl hover:bg-[#326708]"
 						>
 							Question suivante
 						</button>
 						<img
 							src="/assets/happy.png"
 							alt="avatar with happy face"
-							className="w-50 md:w-100 mt-7 md:mt-17 animate-bounce"
+							className="w-50 md:w-100 mt-12 md:mt-25 animate-bounce"
 						/>
 					</article>
 				)}
@@ -184,7 +184,7 @@ function ExercisePageIntermediary() {
 						<button
 							type="button"
 							onClick={handleReset}
-							className="mt-2 p-3 px-12 md:p-4 md:px-16 bg-primary text-white rounded-2xl text-lg md:text-xl hover:bg-[#326708]"
+							className="cursor-pointer mt-2 p-3 px-12 md:p-4 md:px-16 bg-primary text-white rounded-2xl text-lg md:text-xl hover:bg-[#326708]"
 						>
 							Réessayer
 						</button>
@@ -208,7 +208,7 @@ function ExercisePageIntermediary() {
 						<img
 							src="/assets/happy.png"
 							alt="avatar with happy face"
-							className="w-50 md:w-100 mt-7 md:mt-17 animate-bounce"
+							className="w-50 md:w-100 mt-12 md:mt-25 animate-bounce"
 						/>
 					</article>
 				)}

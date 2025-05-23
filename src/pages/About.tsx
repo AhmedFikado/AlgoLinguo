@@ -59,7 +59,7 @@ export default function About() {
 			</h2>
 			<p className="text-center max-w-8/10 mx-auto pb-8">
 				Ce projet a été développé dans le cas du hackaton, qui avait pour
-				objectif de produire une démo fonctionelle d'un outil d'initialisation
+				objectif de produire une démo fonctionelle d'un outil d'initiation
 				au code.
 			</p>
 		</section>
