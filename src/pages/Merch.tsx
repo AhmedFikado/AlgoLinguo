@@ -5,7 +5,7 @@ function Merch() {
 				Retrouvez tous nos produits sur la boutique en ligne !
 			</p>
 			<section className="flex flex-wrap gap-2 justify-center items-center text-center lg:gap-8">
-				<article className="bg-white w-[11rem] h-[14rem] lg:w-[18rem] lg:h-[20rem] lg:pt-4 flex flex-col items-center pt-2 rounded-2xl">
+				<article className="shadow-sm bg-white w-[11rem] h-[14rem] lg:w-[18rem] lg:h-[20rem] lg:pt-4 flex flex-col items-center pt-2 rounded-2xl">
 					<img
 						className="h-[10rem] lg:h-[15rem]"
 						src="assets\tableau.png"
@@ -14,7 +14,7 @@ function Merch() {
 					<h2 className="font-bold">Poster "Abbey Road"</h2>
 					<h2>12€</h2>
 				</article>
-				<article className="bg-white w-[11rem] h-[14rem] lg:w-[18rem] lg:h-[20rem] lg:pt-4 flex flex-col items-center pt-2 rounded-2xl">
+				<article className="shadow-sm bg-white w-[11rem] h-[14rem] lg:w-[18rem] lg:h-[20rem] lg:pt-4 flex flex-col items-center pt-2 rounded-2xl">
 					<img
 						className="h-[10rem] lg:h-[15rem]"
 						src="assets\tshirt-enfant.png"
@@ -23,7 +23,7 @@ function Merch() {
 					<h2 className="font-bold">T-shirt enfant</h2>
 					<h2>Taille unique - 22€</h2>
 				</article>
-				<article className="bg-white w-[11rem] h-[14rem] lg:w-[18rem] lg:h-[20rem] lg:pt-4 flex flex-col items-center pt-2 rounded-2xl">
+				<article className="shadow-sm bg-white w-[11rem] h-[14rem] lg:w-[18rem] lg:h-[20rem] lg:pt-4 flex flex-col items-center pt-2 rounded-2xl">
 					<img
 						className="h-[10rem] lg:h-[15rem]"
 						src="assets\tshirt-homme.png"
@@ -32,7 +32,7 @@ function Merch() {
 					<h2 className="font-bold">T-shirt homme</h2>
 					<h2>M L XL XXL - 28€</h2>
 				</article>
-				<article className="bg-white w-[11rem] h-[14rem] lg:w-[18rem] lg:h-[20rem] lg:pt-4 flex flex-col items-center pt-2 rounded-2xl">
+				<article className="shadow-sm bg-white w-[11rem] h-[14rem] lg:w-[18rem] lg:h-[20rem] lg:pt-4 flex flex-col items-center pt-2 rounded-2xl">
 					<img
 						className="h-[10rem] lg:h-[15rem]"
 						src="assets\tshirt-femme.png"
@@ -41,7 +41,7 @@ function Merch() {
 					<h2 className="font-bold">T-shirt femme</h2>
 					<h2>S M L - 28€</h2>
 				</article>
-				<article className="bg-white w-[11rem] h-[14rem] lg:w-[18rem] lg:h-[20rem] lg:pt-4 flex flex-col items-center pt-2 rounded-2xl">
+				<article className="shadow-sm bg-white w-[11rem] h-[14rem] lg:w-[18rem] lg:h-[20rem] lg:pt-4 flex flex-col items-center pt-2 rounded-2xl">
 					<img
 						className="h-[10rem] lg:h-[15rem]"
 						src="assets\tasse-heros.png"
@@ -50,7 +50,7 @@ function Merch() {
 					<h2 className="font-bold">Tasse super-héros</h2>
 					<h2>8€</h2>
 				</article>
-				<article className="bg-white w-[11rem] h-[14rem] lg:w-[18rem] lg:h-[20rem] lg:pt-4 flex flex-col items-center pt-2 rounded-2xl">
+				<article className="shadow-sm bg-white w-[11rem] h-[14rem] lg:w-[18rem] lg:h-[20rem] lg:pt-4 flex flex-col items-center pt-2 rounded-2xl">
 					<img
 						className="h-[10rem] lg:h-[15rem]"
 						src="assets\carnet.png"
